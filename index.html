@@ -3,149 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internet 4 All</title>
+    <title>Internet 4 All - Advocating Universal Access</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Additional styles can be added here */
-        html {
-            height: 100%;
+        /* ... existing styles ... */
+
+        /* Changes for header animation and behavior */
+        header {
+            transition: top 0.3s;
         }
 
-        body {
-            min-height: 100%;
+        /* Additional styles for the layout */
+        .site-header-row {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        main {
-            flex-grow: 1;
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .site-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        /* Scroll reveal animations setup */
+        [data-animate] {
+            visibility: hidden;
+        }
+
+        /* Responsive adjustments for navigation links */
+        @media (min-width: 768px) {
+            .site-title {
+                font-size: 2rem;
+            }
         }
     </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal flex flex-col">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
     <!-- Header -->
-    <header class="bg-white border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4">
-        <div class="flex items-center justify-between mb-4 md:mb-0">
-            <h1 class="leading-none text-2xl text-gray-800">Internet 4 All</h1>
-            <!-- Hamburger Icon for Mobile -->
-            <button id="mobile-menu-button" class="block md:hidden border border-gray-800 p-2 rounded">
-                <svg class="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+    <header id="site-header" class="fixed w-full bg-white z-30">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center">
+                <img src="logo.jpg" alt="Internet 4 All Logo" class="site-logo">
+                <span class="site-title">Internet 4 All</span>
+            </div>
+            <nav class="space-x-4">
+                <a href="#about" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">About</a>
+                <a href="#donate" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">Donate</a>
+                <a href="#contact" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">Contact</a>
+                <button id="nav-toggle" class="md:hidden">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
-        <nav class="md:flex md:items-center md:w-auto hidden" id="navbar">
-            <ul class="md:flex items-center justify-between text-base text-gray-700 pt-0 pb-4 md:pb-0">
-                <li><a href="#" class="block md:inline-block mt-4 md:mt-0 mr-6 hover:text-blue-500">Home</a></li>
-                <li><a href="#" class="block md:inline-block mt-4 md:mt-0 mr-6 hover:text-blue-500">About</a></li>
-                <li><a href="#" class="block md:inline-block mt-4 md:mt-0 hover:text-blue-500">Contact</a></li>
-            </ul>
-        </nav>
+        <div id="nav-content" data-animate="slide-in-elliptic-top-fwd" class="hidden">
+            <a href="#about" class="block p-4">About</a>
+            <a href="#donate" class="block p-4">Donate</a>
+            <a href="#contact" class="block p-4">Contact</a>
+        </div>
     </header>
 
-    <!-- Content -->
-    <main class="container mx-auto px-4 py-8 flex-grow">
+    <main>
+        <div class="pt-20"></div>
+
         <!-- Hero Section -->
-        <section class="mb-8">
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight text-gray-800 mb-4">Internet Access for All</h2>
-                    <p class="text-gray-700 leading-relaxed mb-6">Ensuring universal internet access is essential for upholding human rights in the digital age. It fosters education, communication, and empowerment for all individuals, regardless of background or location.</p>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Learn More</a>
-                </div>
-                <div class="lg:w-1/2 lg:ml-10 mt-8 lg:mt-0">
-                    <img src="internet_access.jpg" alt="Internet Access" class="rounded-lg shadow-md">
-                </div>
-            </div>
+        <section id="hero" class="container mx-auto mt-8 px-6 py-16 md:py-24 text-center">
+            <h1 class="font-bold text-4xl md:text-6xl max-w-xl mx-auto mb-8" data-animate="fade-in">Connectivity for Everyone, Everywhere.</h1>
+            <p class="max-w-2xl mx-auto mb-8" data-animate="fade-in-up">Join us in our mission to promote equal access to the Internet for all communities around the world.</p>
+            <a href="#stats" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg animate-bounce" data-animate="fade-in-up">Discover the Impact</a>
         </section>
 
         <!-- Statistics Section -->
-        <section class="mb-8">
-            <h2 class="text-3xl font-bold mb-4">Internet Access Statistics</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Global Internet Penetration</h3>
-                    <p class="text-gray-700 mb-4">Approximately 60% of the global population has access to the internet, leaving over 3.5 billion people without connectivity.</p>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Digital Divide</h3>
-                    <p class="text-gray-700 mb-4">The digital divide disproportionately affects marginalized communities, with rural areas and low-income households facing the greatest barriers to internet access.</p>
-                </div>
+        <section id="stats" class="py-12 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-10">Internet Access Statistics</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
+            <!-- Global Internet Users -->
+            <div class="bg-white shadow-lg p-10 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6">Global Internet Users</h3>
+                <p class="text-5xl text-blue-500 font-bold mb-6">4.72B</p>
+                <p class="text-gray-600 mb-4">Approximately 59% of the world's population now have internet access.</p>
+                <a href="https://www.internetworldstats.com/stats.htm" class="text-blue-600 hover:text-blue-800 text-sm">Source: Internet World Stats</a>
             </div>
-        </section>
+
+            <!-- Mobile Internet Usage -->
+            <div class="bg-white shadow-lg p-10 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6">Mobile Internet Usage</h3>
+                <p class="text-5xl text-blue-500 font-bold mb-6">91%</p>
+                <p class="text-gray-600 mb-4">Mobile accounts for approximately 91% of total internet use.</p>
+                <a href="https://www.statista.com/topics/779/mobile-internet/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Statista</a>
+            </div>
+
+            <!-- Average Connection Speed -->
+            <div class="bg-white shadow-lg p-10 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6">Avg. Connection Speed</h3>
+                <p class="text-5xl text-blue-500 font-bold mb-6">73 Mbps</p>
+                <p class="text-gray-600 mb-4">The average global internet connection speed.</p>
+                <a href="https://www.speedtest.net/global-index" class="text-blue-600 hover:text-blue-800 text-sm">Source: Speedtest Global Index</a>
+            </div>
+        </div>
+    </section>
 
         <!-- Testimonials Section -->
-        <section class="mb-8">
-            <h2 class="text-3xl font-bold mb-4">Testimonials</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <blockquote class="text-gray-700 mb-4">"Internet access has transformed my life by providing educational opportunities, connecting me with loved ones, and empowering me to pursue my passions."</blockquote>
-                    <cite class="block text
-                    -gray-800 font-semibold">John Doe</cite>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <blockquote class="text-gray-700 mb-4">"As a teacher, I've seen the impact of internet access on my students' learning. It's crucial for bridging the educational divide and ensuring equal opportunities for all."</blockquote>
-                    <cite class="block text
-                    -gray-800 font-semibold">Jane Smith</cite>
+        <section id="testimonials" class="bg-gray-200 py-8">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center my-8" data-animate="slide-in-blurred-top">What People Are Saying</h2>
+                <div class="flex flex-wrap justify-center" data-animate="slide-in-blurred-left">
+                    <blockquote class="max-w-lg m-4">"Access to reliable Internet has changed the way I learn and connect with others. It's indispensable."</blockquote>
+                    <!-- More testimonials... -->
                 </div>
             </div>
         </section>
 
         <!-- How to Help Section -->
-        <section class="mb-8">
-            <h2 class="text-3xl font-bold mb-4">How to Help</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Donate</h3>
-                    <p class="text-gray-700 mb-4">Your donations can make a difference in providing internet access to those in need. Every contribution counts.</p>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Donate Now</a>
-                </div>
-                <div class="bg-white shadow-md rounded-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4">Contact Congressional Representatives</h3>
-                    <p class="text-gray-700 mb-4">Reach out to your representatives to advocate for policies that support universal internet access.</p>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Contact Now</a>
-                </div>
+        <section id="help" class="container mx-auto my-8 px-6">
+            <h2 class="text-3xl font-bold text-center my-8" data-animate="rotate-in-2-cw">How You Can Help</h2>
+            <!-- Content on how to contribute or volunteer -->
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white py-8">
+            <div class="container mx-auto text-center">
+                <p>© 2024 Internet 4 All. All rights reserved.</p>
             </div>
-        </section>
-
-        <!-- Living Without Internet Section -->
-        <section class="mb-8">
-            <h2 class="text-3xl font-bold mb-4">Living Without Internet for a Day</h2>
-            <p class="text-gray-700 mb-4">Experience what it's like to live without internet for a day. Challenge yourself and gain perspective on the importance of internet access in our daily lives.</p>
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Get Started</a>
-        </section>
-
-        <!-- About Website and Project Section -->
-        <section>
-            <h2 class="text-3xl font-bold mb-4">About This Website and Project</h2>
-            <p class="text-gray-700 mb-4">This website aims to raise awareness about the importance of universal internet access and advocate for policies that ensure everyone has the opportunity to benefit from the digital world.</p>
-        </section>
+        </footer>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-400 shadow mt-auto">
-        <div class="container mx-auto flex py-8">
-            <div class="w-full mx-auto flex flex-wrap justify-center">
-                <div class="text-center text-gray-600">
-                    <p>&copy; 2024 Internet 4 All. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // Scroll behavior header
+        let prevScroll = window.pageYOffset;
+        window.onscroll = function() {
+            let currentScroll = window.pageYOffset;
+            let header = document.getElementById("site-header");
 
-        <script>
-            // JavaScript to toggle mobile menu visibility
-            document
-                .getElementById("mobile-menu-button")
-                .addEventListener("click", function () {
-                    var navbar = document.getElementById("navbar");
-                    if (navbar.classList.contains("hidden")) {
-                        navbar.classList.remove("hidden");
-                    } else {
-                        navbar.classList.add("hidden");
-                    }
-                });
-        </script>
-    </body>
+            if (prevScroll > currentScroll) {
+                header.style.top = "0";
+            } else {
+                header.style.top = "-80px"; // Adjust this value to match your header's height
+            }
+            prevScroll = currentScroll;
+        };
+
+        // Toggle mobile menu
+        document.getElementById('nav-toggle').onclick = function() {
+            document.getElementById("nav-content").classList.toggle("hidden");
+        };
+
+        // Scroll reveal animations
+        ScrollReveal({ reset: true });
+        ScrollReveal().reveal('[data-animate]', {
+            duration: 1000,
+            scale: 0.85
+        });
+
+        // Additional customizations for scrolling animations as needed
+    </script>
+</body>
 </html>
