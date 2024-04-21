@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internet 4 All - Advocating Universal Access</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* ... existing styles ... */
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
+    <!-- Include Swiper's JS BEFORE your custom script tag -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
         /* Changes for header animation and behavior */
         header {
             transition: top 0.3s;
@@ -43,6 +46,32 @@
                 font-size: 2rem;
             }
         }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding-top: 50px; /* Space for the top of the swiper slide */
+            padding-bottom: 50px; /* Space for the bottom of the swiper slide */
+        }
+
+        .mySwiper .swiper-slide {
+            font-size: 18px;
+            background: #fff;
+
+            border-radius: .5rem;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* This is to prevent horizontal overflow caused by the swiper-scrollbar */
+        body {
+            overflow-x: hidden;
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -51,14 +80,14 @@
     <!-- Header -->
     <header id="site-header" class="fixed w-full bg-white z-30">
         <div class="container mx-auto flex justify-between items-center p-4">
-            <div class="flex items-center">
-                <img src="logo.jpg" alt="Internet 4 All Logo" class="site-logo">
+            <a class="flex items-center" href="https://internet-4-all.org">
+                <img src="internet.svg" alt="Internet 4 All Logo" class="site-logo">
                 <span class="site-title">Internet 4 All</span>
-            </div>
+            </a>
             <nav class="space-x-4">
-                <a href="#about" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">About</a>
-                <a href="#donate" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">Donate</a>
-                <a href="#contact" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block">Contact</a>
+                <a href="#about" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block font-semibold">About</a>
+                <a href="#donate" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block font-semibold">Donate</a>
+                <a href="#contact" data-animate="slide-in-elliptic-top-fwd" class="hidden md:inline-block font-semibold">Contact</a>
                 <button id="nav-toggle" class="md:hidden">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -67,9 +96,9 @@
             </nav>
         </div>
         <div id="nav-content" data-animate="slide-in-elliptic-top-fwd" class="hidden">
-            <a href="#about" class="block p-4">About</a>
-            <a href="#donate" class="block p-4">Donate</a>
-            <a href="#contact" class="block p-4">Contact</a>
+            <a href="#about" class="block p-4 font-semibold text-lg">About</a>
+            <a href="#donate" class="block p-4 font-semibold text-lg">Donate</a>
+            <a href="#contact" class="block p-4 font-semibold text-lg">Contact</a>
         </div>
     </header>
 
@@ -77,62 +106,413 @@
         <div class="pt-20"></div>
 
         <!-- Hero Section -->
-        <section id="hero" class="container mx-auto mt-8 px-6 py-16 md:py-24 text-center">
-            <h1 class="font-bold text-4xl md:text-6xl max-w-xl mx-auto mb-8" data-animate="fade-in">Connectivity for Everyone, Everywhere.</h1>
-            <p class="max-w-2xl mx-auto mb-8" data-animate="fade-in-up">Join us in our mission to promote equal access to the Internet for all communities around the world.</p>
-            <a href="#stats" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg animate-bounce" data-animate="fade-in-up">Discover the Impact</a>
+        <section id="hero" class="hero-gradient">
+            <div class="container mx-auto px-6 py-16 md:py-24 text-center">
+                <h1 class="font-bold text-4xl md:text-6xl max-w-xl mx-auto mb-8" data-animate="fade-in">Connectivity for Everyone, Everywhere.</h1>
+                <p class="max-w-2xl mx-auto mb-8" data-animate="fade-in-up">Join us in our mission to promote equal access to the Internet for all communities around the world.</p>
+                <a href="#stats" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg animate-bounce" data-animate="fade-in-up" onclick="event.preventDefault(); document.querySelector('#stats').scrollIntoView({ behavior: 'smooth' });">Discover the Impact</a>
+            </div>
         </section>
 
         <!-- Statistics Section -->
-        <section id="stats" class="py-12 text-center">
-        <h2 class="text-4xl font-bold text-gray-800 mb-10">Internet Access Statistics</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 px-6">
-            <!-- Global Internet Users -->
-            <div class="bg-white shadow-lg p-10 rounded-lg">
-                <h3 class="text-2xl font-semibold mb-6">Global Internet Users</h3>
-                <p class="text-5xl text-blue-500 font-bold mb-6">4.72B</p>
-                <p class="text-gray-600 mb-4">Approximately 59% of the world's population now have internet access.</p>
-                <a href="https://www.internetworldstats.com/stats.htm" class="text-blue-600 hover:text-blue-800 text-sm">Source: Internet World Stats</a>
-            </div>
+        <section id="stats" class="py-12 text-center bg-gray-200">
+            <h2 class="text-4xl font-bold text-gray-800">Internet Access Statistics</h2>
 
-            <!-- Mobile Internet Usage -->
-            <div class="bg-white shadow-lg p-10 rounded-lg">
-                <h3 class="text-2xl font-semibold mb-6">Mobile Internet Usage</h3>
-                <p class="text-5xl text-blue-500 font-bold mb-6">91%</p>
-                <p class="text-gray-600 mb-4">Mobile accounts for approximately 91% of total internet use.</p>
-                <a href="https://www.statista.com/topics/779/mobile-internet/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Statista</a>
-            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Global Internet Users -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Global Internet Users</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">2.55B</p>
+                            <p class="text-gray-600 mb-4">Approximately 32.1% of the world's population doesn't have internet access.</p>
+                            <a href="https://www.internetworldstats.com/stats.htm" class="text-blue-600 hover:text-blue-800 text-sm">Source: Internet World Stats</a>
+                        </div>
+                    </div>
 
-            <!-- Average Connection Speed -->
-            <div class="bg-white shadow-lg p-10 rounded-lg">
-                <h3 class="text-2xl font-semibold mb-6">Avg. Connection Speed</h3>
-                <p class="text-5xl text-blue-500 font-bold mb-6">73 Mbps</p>
-                <p class="text-gray-600 mb-4">The average global internet connection speed.</p>
-                <a href="https://www.speedtest.net/global-index" class="text-blue-600 hover:text-blue-800 text-sm">Source: Speedtest Global Index</a>
+                    <!-- Internet Usage By Income -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Internet Usage By Income</h3>
+                            <p class="text-4xl text-blue-500 font-bold mb-6">20% &rarr; 61% &rarr; 90%</p>
+                            <p class="text-gray-600 mb-4">The internet usage rates by low, middle, and high income individuals.</p>
+                            <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?name_desc=false" class="text-blue-600 hover:text-blue-800 text-sm">Source: ITU</a>
+                        </div>
+                    </div>
+
+                    <!-- Internet Usage By Conflict Regions -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">War-Torn Regional Usage</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">38%</p>
+                            <p class="text-gray-600 mb-4">Only 38% of fragile and conflict affected regions have consistent internet usage.</p>
+                            <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?name_desc=false" class="text-blue-600 hover:text-blue-800 text-sm">Source: ITU</a>
+                        </div>
+                    </div>
+
+                    <!-- Internet Usage By HIPCs -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Internet Usage By HIPCs</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">28%</p>
+                            <p class="text-gray-600 mb-4">Heavily indebted poor countries (HIPC) internet usage is as low as 28%.</p>
+                            <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?name_desc=false" class="text-blue-600 hover:text-blue-800 text-sm">Source: ITU</a>
+                        </div>
+                    </div>
+
+                    <!-- Internet Usage By UN Least Developed -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Internet Usage By Least Developed Countries</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">30%</p>
+                            <p class="text-gray-600 mb-4">Only 30% of the UN's least developed countries have consistent internet usage.</p>
+                            <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?name_desc=false" class="text-blue-600 hover:text-blue-800 text-sm">Source: ITU</a>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Users -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Social Media Users</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">4.59B</p>
+                            <p class="text-gray-600 mb-4">Social media platforms have over 4.59 billion active users worldwide, with the number expected to grow to over 6 billion by 2027.</p>
+                            <a href="https://www.statista.com/statistics/278414/number-of-worldwide-social-network-users/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Statista</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Internet Usage -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Mobile Internet Usage</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">59.45%</p>
+                            <p class="text-gray-600 mb-4">Mobile internet traffic accounts for 59.45% of total global online traffic.</p>
+                            <a href="https://www.statista.com/topics/779/mobile-internet/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Statista</a>
+                        </div>
+                    </div>
+
+                    <!-- Average Connection Speed -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Average Connection Speed</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">52.98 Mbps</p>
+                            <p class="text-gray-600 mb-4">The average global internet download speed on mobile.</p>
+                            <a href="https://www.speedtest.net/global-index" class="text-blue-600 hover:text-blue-800 text-sm">Source: Speedtest Global Index</a>
+                        </div>
+                    </div>
+
+                    <!-- Online Learning Flexibility -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Increased Flexibility</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">63%</p>
+                            <p class="text-gray-600 mb-4">63% of students choose to study online because of the flexibility of virtual learning.</p>
+                            <a href="https://bau.edu/blog/online-learning-statistics/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Bay Atlantic University</a>
+                        </div>
+                    </div>
+
+                    <!-- Online Learning CO2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Fewer Emissions</h3>
+                            <p class="text-4xl text-blue-500 font-bold mb-6">85% less CO<sub>2</sub> &darr;</p>
+                            <p class="text-gray-600 mb-4">Online learning produces 85% fewer CO<sub>2</sub> emissions per student than in-person learning.</p>
+                            <a href="https://www.open.edu/openlearn/mod/oucontent/view.php?id=13707&printable=1" class="text-blue-600 hover:text-blue-800 text-sm">Source: Open University</a>
+                        </div>
+                    </div>
+
+                    <!-- Retention Rates -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">E-Learning Retention Rates</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">60% &uarr;</p>
+                            <p class="text-gray-600 mb-4">Online learning increases student retention rate by as much as 60%.</p>
+                            <a href="https://www.guru99.com/online-learning-statistics.html" class="text-blue-600 hover:text-blue-800 text-sm">Source: Guru99</a>
+                        </div>
+                    </div>
+
+                    <!-- Study Time -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Less Study Time Needed</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">60% &darr;</p>
+                            <p class="text-gray-600 mb-4">Study time is decreased by as much as 60% when done online.</p>
+                            <a href="https://www.guru99.com/online-learning-statistics.html" class="text-blue-600 hover:text-blue-800 text-sm">Source: Guru99</a>
+                        </div>
+                    </div>
+
+                    <!-- Employee Efficiency -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Increased Employee Performance</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">15% &uarr;</p>
+                            <p class="text-gray-600 mb-4">Online learning will improve employee performance by 15%-25%, and increases employee retention by 25%-67%.</p>
+                            <a href="https://cpr.heart.org/-/media/CPR-Files/Course-Formats/Online-Learning-Stats-Flyer-UCM-491651.pdf" class="text-blue-600 hover:text-blue-800 text-sm">Source: American Heart Association</a>
+                        </div>
+                    </div>
+
+                    <!-- Employee Hiring -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Increased Job-Hunting Difficulties</h3>
+                            <p class="text-4xl text-blue-500 font-bold mb-6">37%</p>
+                            <p class="text-gray-600 mb-4">37% of non-broadband indicate it would be hard to create a professional resume; 30% would find it difficult to contact an employer or apply for a job; and 27% would have a hard time finding jobs.</p>
+                            <a href="https://www.pewresearch.org/short-reads/2015/12/28/lack-of-broadband-can-be-a-key-obstacle-especially-for-job-seekers/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Pew Research Center</a>
+                        </div>
+                    </div>
+
+                    <!-- Employee Work -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Jobs Need Internet Connection</h3>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">70%</p>
+                            <p class="text-gray-600 mb-4">70% of surveyed Americans say they could not do their jobs without an internet connection.</p>
+                            <a href="https://www.allconnect.com/blog/70-percent-of-americans-cant-do-their-jobs-without-home-internet-connection" class="text-blue-600 hover:text-blue-800 text-sm">Source: allconnect</a>
+                        </div>
+                    </div>
+
+                    <!-- Internet Speed Differences -->
+                    <div class="swiper-slide">
+                        <div class="bg-white shadow-lg p-10 rounded-lg">
+                            <h3 class="text-2xl font-semibold mb-6">Internet Speeds Vary by Country</h3>
+                            <p class="text-2xl text-blue-500 font-bold mb-6">313.30 vs 4.01 Mbps</p>
+                            <p class="text-gray-600 mb-4">Average mobile download speeds in #1 Qatar vs #148 Cuba. Use speedtest.com's Speedtest Global Index data to see how speeds vary by country for yourself.</p>
+                            <a href="https://www.speedtest.net/performance" class="text-blue-600 hover:text-blue-800 text-sm">Source: speedtest.com</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination" id="sp1"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="bg-gray-200 py-8">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center my-8" data-animate="slide-in-blurred-top">What People Are Saying</h2>
-                <div class="flex flex-wrap justify-center" data-animate="slide-in-blurred-left">
-                    <blockquote class="max-w-lg m-4">"Access to reliable Internet has changed the way I learn and connect with others. It's indispensable."</blockquote>
-                    <!-- More testimonials... -->
+        <section id="testimonials" class="bg-purple-200 py-8">
+            <div class="">
+                <h2 class="text-3xl font-bold text-center mt-8" data-animate="slide-in-blurred-top">What People Are Saying</h2>
+                <div class="swiper mySwiper2">
+                    <div class="swiper-wrapper text-center items-center">
+                        <div class="swiper-slide">
+                            <!-- Testimonial 1 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person1.jpeg" alt="Person 1" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"I had a life-changing experience after gaining access to the Internet. It opened up a world of opportunities for me."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Priya Patel</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 2 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person2.jpeg" alt="Person 2" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has transformed the way I learn and connect with others. It's an essential tool for personal growth."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Mei Ling</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 3 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person3.jpeg" alt="Person 3" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"Access to the Internet has empowered me to start my own business and reach customers worldwide."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Alex Johnson</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 4 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person4.jpeg" alt="Person 4" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has been a lifeline for me during the pandemic. It's helped me stay connected with loved ones and access essential services."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Sarah Thompson</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 5 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person5.jpeg" alt="Person 5" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has been a game-changer for me. It's helped me learn new skills, find work, and connect with others."</p>
+                                <p class="text-gray-600 text-sm mt-4">- David Lee</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 6 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person6.jpeg" alt="Person 6" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has transformed my life. It's helped me access information, connect with others, and pursue my passions."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Maria Garcia</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 7 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person7.jpeg" alt="Person 7" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has been a lifeline for me. It's helped me access essential services, stay connected with loved ones, and pursue my passions."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Emily Brown</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 8 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person8.jpeg" alt="Person 8" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has transformed the way I learn and connect with others. It's an essential tool for personal growth."</p>
+                                <p class="text-gray-600 text-sm mt-4">- John Smith</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 9 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person9.jpeg" alt="Person 9" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has been a game-changer for me. It's helped me learn new skills, find work, and connect with others."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Michael Johnson</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 10 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person10.jpeg" alt="Person 10" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has transformed my life. It's helped me access information, connect with others, and pursue my passions."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Sarah Smith</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <!-- Testimonial 11 -->
+                            <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
+                                <img src="person11.jpeg" alt="Person 11" class="w-16 h-16 rounded-full mx-auto mb-4">
+                                <p class="text-gray-800">"The Internet has been a lifeline for me. It's helped me access essential services, stay connected with loved ones, and pursue my passions."</p>
+                                <p class="text-gray-600 text-sm mt-4">- Jessica Lee</p>
+                            </div>
+                        </div>
+
+                        <!-- Add more testimonials here -->
+                    </div>
+                    <div class="swiper-pagination" id="sp2"></div>
+                </div>
+                <p class="text-sm text-center mt-14">Note: names and images have been changed to protect anonymity using <a href="https://thispersondoesnotexist.com" class="text-blue-600 hover:text-blue-800">thispersondoesnotexist.com</a></p>
+            </div>
+        </section>
+
+        <!-- What's Being Done Section -->
+        <section id="whats-being-done" class="py-8">
+            <h2 class="text-3xl font-bold text-center my-8" data-animate="rotate-in-2-cw">What's Being Done</h2>
+            <!-- Content on initiatives, projects, or organizations working towards universal internet access -->
+            <div class="container mx-auto my-8 px-4">
+                <div class="columns-3xs gap-4 space-y-4">
+                    <!-- Michigan Moon Light Initiative -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Merit: Project Moon-Light</h3>
+                        <a href="https://www.merit.edu/wp-content/uploads/2023/05/MOON-Light_Merit_Info.pdf">
+                            <img src="moonlight.webp" alt="Project Moon-Light" class="w-full object-cover rounded-lg mb-4">
+                        </a>
+                        <p class="text-gray-700">With over 4,000+ miles of fiber optic, foundational infrastructure, Merit supports public-private partnerships to expand community networks across Michigan. To that end, Merit and MSU are working collaboratively on the Michigan Open Optical Network (MOON-Light) which will provide affordable, reliable high-speed internet to 17,000 unserved households in 74 counties across the state. MOONLight enables commercial ISPs to interconnect to the high-performance Merit network.
+                        </p>
+                        <p class="text-gray-700 pt-5">Learn more about <a href="https://www.merit.edu/initiatives/moon-light/" class="text-blue-600 hover:text-blue-800">Project Moon-Light</a>.</p>
+                    </div>
+
+                    <!-- Michigan Wi-Fi Hotspots Map -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Michigan Wi-Fi Hotspots Map</h3>
+                        <a href="https://cngis.maps.arcgis.com/apps/webappviewer/index.html?id=0d69accbb5ff422a82eccc2c9101b69d">
+                            <img src="map.png" alt="Michigan Wi-Fi Hotspots Map" class="w-full object-cover rounded-lg mb-4">
+                        </a>
+                        <p class="text-gray-700">
+                            The State of Michigan has released a statewide Wi-Fi hotspot map to assist residents who currently lack internet access at home. The Wi-Fi mapping effort was spearheaded by the Michigan Public Service Commission (MPSC) and Connected Nation Michigan, along with the Department of Technology, Management and Budget (DTMB) and the Michigan Department of Education.
+                        </p>
+                        <p class="text-gray-700 pt-5">Read about the mapping effort <a href="https://www.michigan.gov/coronavirus/news/2020/06/09/state-of-michigan-launches-online-map-of-free-wi-fi-hotspots-to-help-residents-lacking-access-to-br" class="text-blue-600 hover:text-blue-800">here</a>, or <a class="text-blue-600 hover:text-blue-800" href="https://cngis.maps.arcgis.com/apps/webappviewer/index.html?id=0d69accbb5ff422a82eccc2c9101b69d">check out the map</a>.</p>
+                    </div>
+
+                    <!-- Internet Society -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Internet Society</h3>
+                        <a href="https://www.internetsociety.org/">
+                            <img src="internet-society.png" alt="Internet Society" class="w-full object-cover rounded-lg mb-4">
+                        </a>
+                        <p class="text-gray-700">The Internet Society is a global nonprofit organization that works to ensure the open development, evolution, and use of the Internet for the benefit of all people throughout the world. The Internet Society focuses on promoting universal access to the Internet, open standards, and policy advocacy to ensure the Internet remains a global public resource, open and accessible to all.</p>
+                        <p class="text-gray-700 pt-5">Learn more about the <a href="https://www.internetsociety.org/" class="text-blue-600 hover:text-blue-800">Internet Society</a>.</p>
+                    </div>
+
+                    <!-- Legislature -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Recent Legislature</h3>
+                        <p class="text-gray-700">Congress is working on a number of initiatives to expand broadband access across the United States. The Infrastructure Investment and Jobs Act, which was signed into law in November 2021, includes $65 billion to expand broadband access to underserved communities. The legislation also includes funding for digital inclusion programs to help bridge the digital divide.</p>
+                        <p class="text-gray-700 pt-5">Learn more about the <a href="https://www.congress.gov/bill/117th-congress/house-bill/3684" class="text-blue-600 hover:text-blue-800">Infrastructure Investment and Jobs Act</a>.</p>
+                    </div>
+
+                    <!-- Community Networks -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Community Networks</h3>
+                        <a href="https://muninetworks.org/">
+                            <img src="muninetslogo.png" alt="Community Networks" class="w-full object-cover rounded-lg mb-4">
+                        </a>
+                        <p class="text-gray-700">Community networks are locally owned and operated networks that provide broadband access to residents and businesses in a specific geographic area. These networks are often established by local governments, nonprofit organizations, or cooperatives and are designed to meet the unique needs of the communities they serve. Community networks play a critical role in expanding broadband access to underserved areas and promoting digital equity.</p>
+                        <p class="text-gray-700 pt-5">Learn more about <a href="https://muninetworks.org/" class="text-blue-600 hover:text-blue-800">community networks</a>.
+                        </p>
+                    </div>
+
+                    <!-- Digital Inclusion -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Digital Inclusion Programs</h3>
+                        <a href="https://www.digitalinclusion.org/">
+                            <img src="ndia.png" alt="Digital Inclusion Programs" class="w-full object-cover rounded-lg mb-4">
+                        </a>
+                        <p class="text-gray-700">Digital inclusion programs are initiatives that aim to ensure that all individuals have access to the digital tools and resources they need to participate fully in the digital world. These programs often focus on providing affordable internet access, digital skills training, and access to devices to underserved communities. Digital inclusion programs play a critical role in bridging the digital divide and promoting digital equity.</p>
+                        <p class="text-gray-700 pt-5">Learn more about <a href="https://www.digitalinclusion.org/" class="text-blue-600 hover:text-blue-800">digital inclusion programs</a>.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- How to Help Section -->
-        <section id="help" class="container mx-auto my-8 px-6">
+        <section id="help" class="py-8 bg-green-200">
             <h2 class="text-3xl font-bold text-center my-8" data-animate="rotate-in-2-cw">How You Can Help</h2>
-            <!-- Content on how to contribute or volunteer -->
+            <div class="container mx-auto my-8 px-4">
+                <div class="columns-3xs gap-4 space-y-4" id="donate">
+                    <!-- Donate to Social Initiatives -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Donate to Social Initiatives</h3>
+                        <p class="text-gray-700">Support organizations working towards universal internet access by making a donation.</p>
+                        <a href="https://www.internetsociety.org/donate/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg mt-4 inline-block">Donate to Internet Society</a>
+                        <a href="https://www.digitalinclusion.org/donate-to-ndia/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg mt-4 inline-block">Donate to NDIA</a>
+                    </div>
+
+                    <!-- Contact Your Congressional Leaders -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Contact Your Congressional Leaders</h3>
+                        <p class="text-gray-700">Find and contact your local congressional leaders to advocate for universal internet access.</p>
+                        <a href="https://ziplook.house.gov/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg mt-4 inline-block">Lookup Leaders</a>
+                    </div>
+
+                    <!-- Donate Data -->
+                    <div class="initiative break-inside-avoid-column bg-white shadow-lg p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4">Donate Internet and Hotspots</h3>
+                        <p class="text-gray-700">Programs providing free mobile broadband hotspots and internet service to eligible schools, teachers, students, nonprofits, and libraries.</p>
+                        <a href="https://www.digitalwish.com/dw/digitalwish/supporters" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg mt-4 inline-block">Donate to Digital Wish</a>
+                        <a href="https://techsoup.networkforgood.com/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg mt-4 inline-block">Donate to Tech Soup</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-8">
+            <h2 class="text-3xl font-bold text-center my-8" data-animate="rotate-in-2-cw">About Internet 4 All</h2>
+            <div class="bg-white shadow-lg p-6 m-16 rounded-lg text-align align-items">
+                <h3 class="text-xl font-bold mb-4">Who are we?</h3>
+                <p class="text-gray-700">We are a group of University of Michigan students tasked with helping create a human rights initiative as part of our project for ALA 256.</p>
+                <h3 class="text-xl font-bold my-4">Why internet access?</h3>
+                <p class="text-gray-700">We believe that internet access is a human right and that everyone should have access to the internet, regardless of their location, income, or background. The internet has the power to transform lives, connect people, and provide access to information and opportunities that were previously out of reach. Several of the members of our group have experienced internet issues firsthand throughout their lives, and know the struggles - and just how little people talk about and acknowledge how much of a problem it is.</p>
+                <h3 class="text-xl font-bold my-4" id="contact">How can I get in touch?</h3>
+                <p class="text-gray-700">If you have any questions, comments, or feedback, please feel free to reach out to us at <a href="mailto:internet-4-all@umich.edu" class="text-blue-600 hover:text-blue-800">internet-4-all@umich.edu</a>.</p>
+            </div>
         </section>
 
         <!-- Footer -->
-        <footer class="bg-white py-8">
+        <footer class="bg-gray-800 py-8 text-white">
             <div class="container mx-auto text-center">
                 <p>© 2024 Internet 4 All. All rights reserved.</p>
             </div>
@@ -147,16 +527,31 @@
             let header = document.getElementById("site-header");
 
             if (prevScroll > currentScroll) {
+                header.style.visibility = "visible";
                 header.style.top = "0";
             } else {
+                header.style.visibility = "hidden";
                 header.style.top = "-80px"; // Adjust this value to match your header's height
+
+                // also set the nav-content to be hidden
+                document.getElementById("nav-content").classList.add("hidden");
+                document.getElementById("nav-content").style.opacity = "0";
             }
             prevScroll = currentScroll;
         };
 
         // Toggle mobile menu
         document.getElementById('nav-toggle').onclick = function() {
-            document.getElementById("nav-content").classList.toggle("hidden");
+            // get current state of nav-content and toggle it
+            let state = document.getElementById("nav-content").classList.contains("hidden");
+            // set the nav-content to be hidden if it's visible, and vice versa
+            if (state) {
+                document.getElementById("nav-content").classList.remove("hidden");
+                document.getElementById("nav-content").style.opacity = "1";
+            } else {
+                document.getElementById("nav-content").classList.add("hidden");
+                document.getElementById("nav-content").style.opacity = "0";
+            }
         };
 
         // Scroll reveal animations
@@ -166,7 +561,97 @@
             scale: 0.85
         });
 
-        // Additional customizations for scrolling animations as needed
+        var mySwiper = new Swiper('.mySwiper', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+            },
+            pagination: {
+            el: '#sp1',
+            clickable: true,
+            },
+            // Responsive breakpoints
+            breakpoints: {
+            550: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            900: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+            2500: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+            },
+            },
+        });
+
+        var mySwiper = new Swiper('.mySwiper2', {
+            spaceBetween: 10,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+            },
+            pagination: {
+            el: '#sp2',
+            clickable: true,
+            },
+            // Responsive breakpoints
+            breakpoints: {
+            510: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            800: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+            1050: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+            },
+            1300: {
+                slidesPerView: 5,
+                spaceBetween: 10,
+            },
+            2500: {
+                slidesPerView: 8,
+                spaceBetween: 10,
+            },
+            },
+        });
+
+        function animateGradient() {
+            var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+            // Assuming two color stops in the gradient, you can modify this as per need
+            var colorStop1 = scrollPercentage * 100 * 2; // Beginning color stop
+            var colorStop2 = 100 - scrollPercentage * 100 * 2; // Ending color stop
+
+            // if color stops are reversed, swap the values
+            if (colorStop1 > colorStop2) {
+                var temp = colorStop1;
+                colorStop1 = colorStop2;
+                colorStop2 = temp;
+            }
+            
+            // Update hero background gradient
+            var hero = document.querySelector('.hero-gradient');
+            if (hero) {
+                hero.style.backgroundImage = 'linear-gradient(to right, #60a5fa ' + colorStop1 + '%, #2563eb ' + colorStop2 + '%)';
+            }
+        }
+
+        // Event listener on scroll
+        window.addEventListener('scroll', animateGradient);
+
+        // Initial call to the function
+        animateGradient();
     </script>
 </body>
 </html>
