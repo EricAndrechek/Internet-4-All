@@ -7,9 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="Internet 4 All">
+    <meta name="application-name" content="Internet 4 All">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Include Swiper's JS BEFORE your custom script tag -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
     <style>
         /* Changes for header animation and behavior */
         header {
@@ -72,6 +82,26 @@
         body {
             overflow-x: hidden;
         }
+
+        .mySwiper div.swiper-slide {
+            display: flex;
+            flex-flow: column;
+            height: auto;
+        }
+
+        .mySwiper div.rounded-lg {
+            flex-grow: 1;
+        }
+
+        .mySwiper2 div.swiper-slide {
+            display: flex;
+            flex-flow: column;
+            height: auto;
+        }
+
+        .mySwiper2 div.rounded-lg {
+            flex-grow: 1;
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -108,8 +138,8 @@
         <!-- Hero Section -->
         <section id="hero" class="hero-gradient">
             <div class="container mx-auto px-6 py-16 md:py-24 text-center">
-                <h1 class="font-bold text-4xl md:text-6xl max-w-xl mx-auto mb-8" data-animate="fade-in">Connectivity for Everyone, Everywhere.</h1>
-                <p class="max-w-2xl mx-auto mb-8" data-animate="fade-in-up">Join us in our mission to promote equal access to the Internet for all communities around the world.</p>
+                <h1 class="font-bold text-4xl md:text-6xl max-w-xl mx-auto mb-8 drop-shadow-lg" data-animate="fade-in">Connectivity for Everyone, Everywhere.</h1>
+                <p class="max-w-2xl mx-auto mb-8 drop-shadow-lg" data-animate="fade-in-up">Join us in our mission to promote equal access to the Internet for all communities around the world.</p>
                 <a href="#stats" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg animate-bounce" data-animate="fade-in-up" onclick="event.preventDefault(); document.querySelector('#stats').scrollIntoView({ behavior: 'smooth' });">Discover the Impact</a>
             </div>
         </section>
@@ -134,7 +164,7 @@
                     <div class="swiper-slide">
                         <div class="bg-white shadow-lg p-10 rounded-lg">
                             <h3 class="text-2xl font-semibold mb-6">Internet Usage By Income</h3>
-                            <p class="text-4xl text-blue-500 font-bold mb-6">20% &rarr; 61% &rarr; 90%</p>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">20% | 61% | 90%</p>
                             <p class="text-gray-600 mb-4">The internet usage rates by low, middle, and high income individuals.</p>
                             <a href="https://data.worldbank.org/indicator/IT.NET.USER.ZS?name_desc=false" class="text-blue-600 hover:text-blue-800 text-sm">Source: ITU</a>
                         </div>
@@ -214,7 +244,7 @@
                     <div class="swiper-slide">
                         <div class="bg-white shadow-lg p-10 rounded-lg">
                             <h3 class="text-2xl font-semibold mb-6">Fewer Emissions</h3>
-                            <p class="text-4xl text-blue-500 font-bold mb-6">85% less CO<sub>2</sub> &darr;</p>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">85% less CO<sub>2</sub> &darr;</p>
                             <p class="text-gray-600 mb-4">Online learning produces 85% fewer CO<sub>2</sub> emissions per student than in-person learning.</p>
                             <a href="https://www.open.edu/openlearn/mod/oucontent/view.php?id=13707&printable=1" class="text-blue-600 hover:text-blue-800 text-sm">Source: Open University</a>
                         </div>
@@ -254,7 +284,7 @@
                     <div class="swiper-slide">
                         <div class="bg-white shadow-lg p-10 rounded-lg">
                             <h3 class="text-2xl font-semibold mb-6">Increased Job-Hunting Difficulties</h3>
-                            <p class="text-4xl text-blue-500 font-bold mb-6">37%</p>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">37%</p>
                             <p class="text-gray-600 mb-4">37% of non-broadband indicate it would be hard to create a professional resume; 30% would find it difficult to contact an employer or apply for a job; and 27% would have a hard time finding jobs.</p>
                             <a href="https://www.pewresearch.org/short-reads/2015/12/28/lack-of-broadband-can-be-a-key-obstacle-especially-for-job-seekers/" class="text-blue-600 hover:text-blue-800 text-sm">Source: Pew Research Center</a>
                         </div>
@@ -274,7 +304,7 @@
                     <div class="swiper-slide">
                         <div class="bg-white shadow-lg p-10 rounded-lg">
                             <h3 class="text-2xl font-semibold mb-6">Internet Speeds Vary by Country</h3>
-                            <p class="text-2xl text-blue-500 font-bold mb-6">313.30 vs 4.01 Mbps</p>
+                            <p class="text-5xl text-blue-500 font-bold mb-6">313 vs 4 Mbps</p>
                             <p class="text-gray-600 mb-4">Average mobile download speeds in #1 Qatar vs #148 Cuba. Use speedtest.com's Speedtest Global Index data to see how speeds vary by country for yourself.</p>
                             <a href="https://www.speedtest.net/performance" class="text-blue-600 hover:text-blue-800 text-sm">Source: speedtest.com</a>
                         </div>
@@ -290,7 +320,7 @@
             <div class="">
                 <h2 class="text-3xl font-bold text-center mt-8" data-animate="slide-in-blurred-top">What People Are Saying</h2>
                 <div class="swiper mySwiper2">
-                    <div class="swiper-wrapper text-center items-center">
+                    <div class="swiper-wrapper text-center">
                         <div class="swiper-slide">
                             <!-- Testimonial 1 -->
                             <div class="w-64 bg-white shadow-lg p-4 rounded-lg mx-2 my-4">
@@ -508,13 +538,14 @@
                 <p class="text-gray-700">We believe that internet access is a human right and that everyone should have access to the internet, regardless of their location, income, or background. The internet has the power to transform lives, connect people, and provide access to information and opportunities that were previously out of reach. Several of the members of our group have experienced internet issues firsthand throughout their lives, and know the struggles - and just how little people talk about and acknowledge how much of a problem it is.</p>
                 <h3 class="text-xl font-bold my-4" id="contact">How can I get in touch?</h3>
                 <p class="text-gray-700">If you have any questions, comments, or feedback, please feel free to reach out to us at <a href="mailto:internet-4-all@umich.edu" class="text-blue-600 hover:text-blue-800">internet-4-all@umich.edu</a>.</p>
+                
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="bg-gray-800 py-8 text-white">
             <div class="container mx-auto text-center">
-                <p>© 2024 Internet 4 All. All rights reserved.</p>
+                <a href="">© 2024 Internet 4 All. All rights reserved.</a>
             </div>
         </footer>
     </main>
